@@ -20,7 +20,7 @@
   </style>
 </head>
 <body>
-  <h1>Quiz: Vector Spaces & Related Concepts</h1>
+  <h1>Quiz: Click the correct/best option</h1>
   <form id="quizForm">
 
     <div class="question">
