@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,7 +21,8 @@
   </style>
 </head>
 <body>
-  <h1>Quiz: Vector Spaces & Related Concepts</h1>
+  <h1>Click the correct/best option(Quiz by ASV)</h1>
+  <h2> Attempt again if you don't score 10/10</h2>
   <form id="quizForm">
 
     <div class="question">
