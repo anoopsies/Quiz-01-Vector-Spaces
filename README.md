@@ -2,162 +2,168 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vector Spaces Quiz</title>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
-    h1 { text-align: center; }
-    .question { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    button { padding: 10px 20px; font-size: 16px; margin-top: 20px; cursor: pointer; }
-    #result { margin-top: 20px; font-weight: bold; font-size: 18px; }
-    #feedback { margin-top: 15px; padding: 10px; background: #fff3f3; border: 1px solid #ffcccc; border-radius: 6px; }
-    .matrix { display: inline-block; border: 1px solid black; margin: 2px; }
-    .matrix table { border-collapse: collapse; }
-    .matrix td { border: 1px solid black; padding: 5px 10px; text-align: center; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    .correct {
+      color: green;
+      font-weight: bold;
+    }
+    .incorrect {
+      color: red;
+      font-weight: bold;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <h1>Click the correct/best option(Quiz by ASV)</h1>
-  <h2> Attempt again if you don't score 10/10</h2>
+  <h2>Vector Spaces Quiz</h2>
   <form id="quizForm">
-
+    
     <div class="question">
-      <p>1. The vectors \((1,0)\) and \((0,1)\) in \(\mathbb{R}^2\) form:</p>
-      <input type="radio" name="q1" value="a"> a) A basis of \(\mathbb{R}^2\)<br>
-      <input type="radio" name="q1" value="b"> b) A dependent set<br>
-      <input type="radio" name="q1" value="c"> c) Not spanning \(\mathbb{R}^2\)<br>
-      <input type="radio" name="q1" value="d"> d) None of these<br>
+      <p>1. Which of the following is a basis for \(\mathbb{R}^2\)?</p>
+      <label><input type="radio" name="q1" value="a"> \((1,0), (0,1)\)</label><br>
+      <label><input type="radio" name="q1" value="b"> \((1,1), (2,2)\)</label><br>
+      <label><input type="radio" name="q1" value="c"> \((1,0), (1,1)\)</label><br>
+      <label><input type="radio" name="q1" value="d"> \((0,0), (1,0)\)</label><br>
+      <div id="feedback1"></div>
     </div>
 
     <div class="question">
-      <p>2. The dimension of \(\mathbb{R}^3\) is:</p>
-      <input type="radio" name="q2" value="a"> a) 2<br>
-      <input type="radio" name="q2" value="b"> b) 3<br>
-      <input type="radio" name="q2" value="c"> c) 4<br>
-      <input type="radio" name="q2" value="d"> d) Infinite<br>
+      <p>2. The dimension of the space of all real polynomials of degree at most 2 is:</p>
+      <label><input type="radio" name="q2" value="a"> 2</label><br>
+      <label><input type="radio" name="q2" value="b"> 3</label><br>
+      <label><input type="radio" name="q2" value="c"> 4</label><br>
+      <label><input type="radio" name="q2" value="d"> Infinite</label><br>
+      <div id="feedback2"></div>
     </div>
 
     <div class="question">
-      <p>3. Which of the following is a linear combination of \((1,0)\) and \((0,1)\) in \(\mathbb{R}^2\)?</p>
-      <input type="radio" name="q3" value="a"> a) \((2,3)\)<br>
-      <input type="radio" name="q3" value="b"> b) \((5,-1)\)<br>
-      <input type="radio" name="q3" value="c"> c) \((0,0)\)<br>
-      <input type="radio" name="q3" value="d"> d) All of the above<br>
+      <p>3. The set \(\{(1,0,0), (0,1,0), (0,0,1)\}\) in \(\mathbb{R}^3\) is:</p>
+      <label><input type="radio" name="q3" value="a"> Linearly dependent</label><br>
+      <label><input type="radio" name="q3" value="b"> Linearly independent</label><br>
+      <label><input type="radio" name="q3" value="c"> Not a basis</label><br>
+      <label><input type="radio" name="q3" value="d"> None of these</label><br>
+      <div id="feedback3"></div>
     </div>
 
     <div class="question">
-      <p>4. The span of \(\{(1,1,0)\}\) in \(\mathbb{R}^3\) is:</p>
-      <input type="radio" name="q4" value="a"> a) A line through origin<br>
-      <input type="radio" name="q4" value="b"> b) A plane through origin<br>
-      <input type="radio" name="q4" value="c"> c) Whole \(\mathbb{R}^3\)<br>
-      <input type="radio" name="q4" value="d"> d) Zero vector only<br>
+      <p>4. The span of \(\{(1,1)\}\) in \(\mathbb{R}^2\) is:</p>
+      <label><input type="radio" name="q4" value="a"> The entire \(\mathbb{R}^2\)</label><br>
+      <label><input type="radio" name="q4" value="b"> A line through the origin</label><br>
+      <label><input type="radio" name="q4" value="c"> A plane</label><br>
+      <label><input type="radio" name="q4" value="d"> Zero vector only</label><br>
+      <div id="feedback4"></div>
     </div>
 
     <div class="question">
-      <p>5. The set \(\{x, x^2\}\) in the space of real polynomials of degree \(\leq 2\) is:</p>
-      <input type="radio" name="q5" value="a"> a) Linearly independent<br>
-      <input type="radio" name="q5" value="b"> b) Linearly dependent<br>
-      <input type="radio" name="q5" value="c"> c) A basis<br>
-      <input type="radio" name="q5" value="d"> d) Both a and c<br>
+      <p>5. The dimension of the space of all \(2 \times 2\) real matrices is:</p>
+      <label><input type="radio" name="q5" value="a"> 2</label><br>
+      <label><input type="radio" name="q5" value="b"> 3</label><br>
+      <label><input type="radio" name="q5" value="c"> 4</label><br>
+      <label><input type="radio" name="q5" value="d"> 5</label><br>
+      <div id="feedback5"></div>
     </div>
 
     <div class="question">
-      <p>6. The dimension of the space of all real polynomials of degree \(\leq 2\) is:</p>
-      <input type="radio" name="q6" value="a"> a) 2<br>
-      <input type="radio" name="q6" value="b"> b) 3<br>
-      <input type="radio" name="q6" value="c"> c) 4<br>
-      <input type="radio" name="q6" value="d"> d) Infinite<br>
+      <p>6. The set \(\{1, x, x^2\}\) in the space of polynomials of degree at most 2 is:</p>
+      <label><input type="radio" name="q6" value="a"> A basis</label><br>
+      <label><input type="radio" name="q6" value="b"> Linearly dependent</label><br>
+      <label><input type="radio" name="q6" value="c"> Not generating the space</label><br>
+      <label><input type="radio" name="q6" value="d"> None</label><br>
+      <div id="feedback6"></div>
     </div>
 
     <div class="question">
-      <p>7. The set of all \(2 \times 2\) real matrices forms a vector space of dimension:</p>
-      <input type="radio" name="q7" value="a"> a) 2<br>
-      <input type="radio" name="q7" value="b"> b) 3<br>
-      <input type="radio" name="q7" value="c"> c) 4<br>
-      <input type="radio" name="q7" value="d"> d) Infinite<br>
+      <p>7. The number of vectors in any basis of \(\mathbb{R}^3\) is:</p>
+      <label><input type="radio" name="q7" value="a"> 2</label><br>
+      <label><input type="radio" name="q7" value="b"> 3</label><br>
+      <label><input type="radio" name="q7" value="c"> 4</label><br>
+      <label><input type="radio" name="q7" value="d"> Depends on the basis</label><br>
+      <div id="feedback7"></div>
     </div>
 
     <div class="question">
-      <p>8. Consider the set \(\{(1,0,0), (0,1,0), (1,1,0)\}\) in \(\mathbb{R}^3\). This set is:</p>
-      <input type="radio" name="q8" value="a"> a) Linearly independent<br>
-      <input type="radio" name="q8" value="b"> b) Linearly dependent<br>
-      <input type="radio" name="q8" value="c"> c) A basis<br>
-      <input type="radio" name="q8" value="d"> d) None of these<br>
+      <p>8. The set \(\{(1,2), (2,4)\}\) in \(\mathbb{R}^2\) is:</p>
+      <label><input type="radio" name="q8" value="a"> Linearly independent</label><br>
+      <label><input type="radio" name="q8" value="b"> Linearly dependent</label><br>
+      <label><input type="radio" name="q8" value="c"> A basis</label><br>
+      <label><input type="radio" name="q8" value="d"> None</label><br>
+      <div id="feedback8"></div>
     </div>
 
     <div class="question">
-      <p>9. A basis for the space of \(2 \times 2\) real matrices is given by:</p>
-      <div class="matrix"><table><tr><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td></tr></table></div>,
-      <div class="matrix"><table><tr><td>0</td><td>1</td></tr><tr><td>0</td><td>0</td></tr></table></div>,
-      <div class="matrix"><table><tr><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td></tr></table></div>,
-      <div class="matrix"><table><tr><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td></tr></table></div>
-      <br>
-      <input type="radio" name="q9" value="a"> a) True<br>
-      <input type="radio" name="q9" value="b"> b) False<br>
+      <p>9. The vector \((1,1,1)\) in \(\mathbb{R}^3\) can be written as a linear combination of:</p>
+      <label><input type="radio" name="q9" value="a"> \((1,0,0), (0,1,0), (0,0,1)\)</label><br>
+      <label><input type="radio" name="q9" value="b"> \((1,0,0), (1,1,0)\)</label><br>
+      <label><input type="radio" name="q9" value="c"> \((1,1,0), (0,1,1)\)</label><br>
+      <label><input type="radio" name="q9" value="d"> None</label><br>
+      <div id="feedback9"></div>
     </div>
 
     <div class="question">
-      <p>10. The maximum number of linearly independent vectors in \(\mathbb{R}^2\) is:</p>
-      <input type="radio" name="q10" value="a"> a) 1<br>
-      <input type="radio" name="q10" value="b"> b) 2<br>
-      <input type="radio" name="q10" value="c"> c) 3<br>
-      <input type="radio" name="q10" value="d"> d) Infinite<br>
+      <p>10. The zero vector in any vector space is:</p>
+      <label><input type="radio" name="q10" value="a"> Always in every span</label><br>
+      <label><input type="radio" name="q10" value="b"> Never in any span</label><br>
+      <label><input type="radio" name="q10" value="c"> Sometimes in span</label><br>
+      <label><input type="radio" name="q10" value="d"> None</label><br>
+      <div id="feedback10"></div>
     </div>
 
-    <button type="button" onclick="submitQuiz()">Submit Quiz</button>
+    <button type="button" onclick="checkAnswers()">Submit</button>
   </form>
-  <div id="result"></div>
-  <div id="feedback"></div>
 
   <script>
-    function submitQuiz() {
-      const answers = {
-        q1: "a",
-        q2: "b",
-        q3: "d",
-        q4: "a",
-        q5: "a",
-        q6: "b",
-        q7: "c",
-        q8: "b",
-        q9: "a",
-        q10: "b"
-      };
+    const answers = {
+      q1: "a",
+      q2: "b",
+      q3: "b",
+      q4: "b",
+      q5: "c",
+      q6: "a",
+      q7: "b",
+      q8: "b",
+      q9: "a",
+      q10: "a"
+    };
 
+    function checkAnswers() {
       let score = 0;
-      let incorrect = [];
-
-      for (let q in answers) {
-        const selected = document.querySelector(`input[name="${q}"]:checked`);
+      for (let i = 1; i <= 10; i++) {
+        const q = "q" + i;
+        const feedback = document.getElementById("feedback" + i);
+        const selected = document.querySelector(`input[name=${q}]:checked`);
         if (selected) {
           if (selected.value === answers[q]) {
             score++;
+            feedback.innerHTML = `<span class="correct">Correct ✔️</span>`;
           } else {
-            incorrect.push(q.replace("q", "Question "));
+            feedback.innerHTML = `<span class="incorrect">Incorrect ✘ (Correct: ${answers[q]})</span>`;
           }
         } else {
-          incorrect.push(q.replace("q", "Question ") + " (not answered)");
+          feedback.innerHTML = `<span class="incorrect">No answer selected ✘ (Correct: ${answers[q]})</span>`;
         }
       }
-
-      document.getElementById("result").innerText =
-        `You scored ${score} / ${Object.keys(answers).length}`;
-
-      if (incorrect.length > 0) {
-        document.getElementById("feedback").innerHTML =
-          "<b>Incorrect or Unanswered:</b><br>" + incorrect.join("<br>");
-      } else {
-        document.getElementById("feedback").innerHTML =
-          "<b>Excellent!</b> All answers are correct 🎉";
-      }
-
-      MathJax.typeset();
+      alert("Your score: " + score + "/10");
     }
   </script>
 </body>
 </html>
-
