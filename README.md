@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -14,13 +14,14 @@
     .question { margin: 15px 0; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
     button { padding: 10px 20px; font-size: 16px; margin-top: 20px; cursor: pointer; }
     #result { margin-top: 20px; font-weight: bold; font-size: 18px; }
+    #feedback { margin-top: 15px; padding: 10px; background: #fff3f3; border: 1px solid #ffcccc; border-radius: 6px; }
     .matrix { display: inline-block; border: 1px solid black; margin: 2px; }
     .matrix table { border-collapse: collapse; }
     .matrix td { border: 1px solid black; padding: 5px 10px; text-align: center; }
   </style>
 </head>
 <body>
-  <h1>Click the correct/best option(Quiz by AnoopSV)</h1>
+  <h1>Quiz: Vector Spaces & Related Concepts</h1>
   <form id="quizForm">
 
     <div class="question">
@@ -109,30 +110,53 @@
     <button type="button" onclick="submitQuiz()">Submit Quiz</button>
   </form>
   <div id="result"></div>
+  <div id="feedback"></div>
 
   <script>
     function submitQuiz() {
       const answers = {
-        q1: "a", // basis of R2
-        q2: "b", // dim R3 = 3
-        q3: "d", // all of the above
-        q4: "a", // line through origin
-        q5: "a", // independent
-        q6: "b", // dimension = 3
-        q7: "c", // dimension = 4
-        q8: "b", // dependent
-        q9: "a", // true
-        q10: "b" // max = 2
+        q1: "a",
+        q2: "b",
+        q3: "d",
+        q4: "a",
+        q5: "a",
+        q6: "b",
+        q7: "c",
+        q8: "b",
+        q9: "a",
+        q10: "b"
       };
+
       let score = 0;
+      let incorrect = [];
+
       for (let q in answers) {
         const selected = document.querySelector(`input[name="${q}"]:checked`);
-        if (selected && selected.value === answers[q]) score++;
+        if (selected) {
+          if (selected.value === answers[q]) {
+            score++;
+          } else {
+            incorrect.push(q.replace("q", "Question "));
+          }
+        } else {
+          incorrect.push(q.replace("q", "Question ") + " (not answered)");
+        }
       }
+
       document.getElementById("result").innerText =
-        `You scored ${score} / 10`;
-      MathJax.typeset(); // re-render after submission
+        `You scored ${score} / ${Object.keys(answers).length}`;
+
+      if (incorrect.length > 0) {
+        document.getElementById("feedback").innerHTML =
+          "<b>Incorrect or Unanswered:</b><br>" + incorrect.join("<br>");
+      } else {
+        document.getElementById("feedback").innerHTML =
+          "<b>Excellent!</b> All answers are correct 🎉";
+      }
+
+      MathJax.typeset();
     }
   </script>
 </body>
 </html>
+
