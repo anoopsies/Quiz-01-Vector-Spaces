@@ -35,7 +35,7 @@
   </style>
 </head>
 <body>
-  <h2>Vector Spaces Quiz</h2>
+  <h2>Click the correct/best option(Quiz by AnoopSV)</h2>
   <form id="quizForm">
     
     <div class="question">
